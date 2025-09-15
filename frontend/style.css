@@ -1,22 +1,66 @@
-:root{
-    --corfundo:rgb(240, 240, 240);
-    --fonte:rgb(32, 32, 32);
+:root {
+    --corfundo: rgb(240, 240, 240);
+    --fonte: rgb(32, 32, 32);
+    --input: rgb(186, 186, 186);
+    --azul: rgb(4, 38, 77);
 }
 
 
-body{
+body {
     background-color: var(--corfundo);
     margin: 0px;
     padding: 0px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .telaloginS {
-    color:var(--fonte);
+    color: var(--azul);
     display: flex;
-    align-items: center;
     flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
     align-items: center;
-    
+    align-content: center;
+    height: 100vh;
+}
+
+.telaloginS img {
+    width: 70%;
+    height: 25%;
+}
+
+.telaloginS a{
+    font-size: small;
+}
+
+.camposinfo {
+    gap: 5px;
+}
+
+.camposinfo input {
+    margin-bottom: 10px;
+    padding: 3%;
+    border-radius: 6px;
+    border: none;
+    background-color: var(--input);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.camposinfo p {
+    margin: 0%;
+    font-size: small;
+}
+
+.btncad {
+    margin: 2% 0;
+    width: 40%;
+    padding: 1%;
+    padding-block: 1.70%;
+    border: none;
+    background-color: var(--azul);
+    border-radius: 6px;
+    color: var(--corfundo);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 .telacadastroS {
