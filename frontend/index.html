@@ -6,47 +6,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PasseioBNU</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
 </head>
 
 <body>
     <div class="telaloginS" id="telalogin">
         <img src="logo.png" alt="logo PasseioBNU">
         <h2>Login</h2>
-            <div class="camposinfo">
-                <p>email</p>
-                <input type="email">
-            </div>
-            <div class="camposinfo">
-                <p>senha</p>
-                <input type="password">
-            </div>
-        <button class="btncad">Login</button>
-        <a>Cadastre-se</a>
+        <div class="camposinfo">
+            <p>email</p>
+            <input type="email">
+        </div>
+        <div class="camposinfo">
+            <p>senha</p>
+            <input type="password">
+        </div>
+        <button class="btncad" onclick="paratelaconteudo()">Login</button>
+        <a onclick="paratelacadastro()">Cadastre-se</a>
     </div>
     <div class="telacadastroS" id="telacadastro">
-        <form>
-            <div>
-                <p>email</p>
-                <input type="email">
-            </div>
-            <div>
-                <p>nome</p>
-                <input type="text">
-            </div>
-            <div>
-                <p>senha</p>
-                <input type="password">
-            </div>
-        </form>
-        <button>Cadastrar</button>
-        <a>Login</a>
+        <img src="logo.png" alt="logo PasseioBNU">
+        <h2>Cadastro</h2>
+
+        <div class="camposinfo">
+            <p>email</p>
+            <input type="email">
+        </div>
+        <div class="camposinfo">
+            <p>nome</p>
+            <input type="text">
+        </div>
+        <div class="camposinfo">
+            <p>senha</p>
+            <input type="password">
+        </div>
+        <button class="btncad">Cadastrar</button>
+        <a onclick="paratelalogin()">Login</a>
     </div>
     <div class="telaconteudoS" id="telaconteudo">
-        <header></header>
+        <header class="cabecalho">
+            <img src="logocinza.png" alt="logo PasseioBNU">
+            <div div class="container">
+                <p onclick="abrirmenuacao()">Olá,</p>
+                <div id="menuacao" class="menuacaoS">
+                    <p>Sair</p>
+                </div>
+            </div>
+        </header>
         <div></div>
-        <navbar></navbar>
+        <navbar class="barranavegacao">
+            <button class="opcaonavbar"><i class="bi bi-house"></i>home</button>
+            <button class="opcaonavbar"><i class="bi bi-geo-alt"></i>Locais</button>
+            <button class="opcaonavbar"><i class="bi bi-star"></i>Ranking</button>
+            <button class="opcaonavbar"><i class="bi bi-person"></i>Perfil</button>
+        </navbar>
     </div>
+
+
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

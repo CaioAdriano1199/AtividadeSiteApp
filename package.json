@@ -8,5 +8,20 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.57.4",
+    "bootstrap": "^5.3.8",
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CaioAdriano1199/AtividadeSiteApp.git"
+  },
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/CaioAdriano1199/AtividadeSiteApp/issues"
+  },
+  "homepage": "https://github.com/CaioAdriano1199/AtividadeSiteApp#readme"
 }
