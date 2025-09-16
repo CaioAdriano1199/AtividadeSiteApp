@@ -92,6 +92,7 @@ body {
 .cabecalho {
     background-color: var(--azul);
     display: flex;
+    position: fixed;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -139,33 +140,120 @@ body {
 }
 
 .container {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
 
 .menuacaoS {
-  display: none;
-  position: absolute;
-  top: 80%;
-  right: -20%;
-  border: solid 1px var(--azul);
-  background: var(--corfundo);
-  color: var(--azul);
-  padding: 10px 15px;
-  border-radius:0 0 4px 4px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  z-index: 1000;
+    display: none;
+    position: absolute;
+    top: 80%;
+    right: -20%;
+    border: solid 1px var(--azul);
+    background: var(--corfundo);
+    color: var(--azul);
+    padding: 10px 15px;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
 }
 
 
 .menuacaoS.ativo {
-  display: block;
+    display: block;
 }
 
 .menuacaoS p {
+    margin: 0;
+    cursor: pointer;
+}
+
+.telahomeS {
+    display: none;
+}
+
+.telalugaresS {
+    display: block;
+    margin-bottom: 14%;
+    color: var(--azul);
+}
+
+.titulotela{
+    display: flex;
+    justify-content: center;
+}
+
+.telarankingS {
+    display: none;
+}
+
+.telaperfilS {
+    display: none;
+}
+
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 12px;
+    margin: 10px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    max-width: 400px;
+}
+
+.card img {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.card .info {
+    display: flex;
+    flex-direction: column;
+}
+
+.card .info h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.card .info p {
+    margin: 2px 0;
+    font-size: 14px;
+}
+
+.nome-nota {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.nome-nota h3 {
   margin: 0;
-  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.nota {
+  font-size: 14px;
+  color: #e67e22;
+  display: flex;
+  align-items: center;
+}
+
+.nota i {
+  margin-right: 4px;
+}
+
+.endereco{
+    font-size: x-small;
+    padding: 1%;
+
 }
