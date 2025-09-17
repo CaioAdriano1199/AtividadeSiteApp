@@ -3,7 +3,6 @@ const cadastro = document.getElementById("telacadastro");
 const conteudo = document.getElementById("telaconteudo");
 const menuacaoL = document.getElementById("menuacao");
 const olaP = document.querySelector(".container p");
-const barranav = document.getElementById("barranavegacao");
 
 function paratelacadastro() {
     login.style.display = "none";
@@ -18,6 +17,7 @@ function paratelalogin() {
 function paratelaconteudo() {
     login.style.display = "none";
     conteudo.style.display = "flex";
+    
 }
 
 function abrirmenuacao() {
@@ -66,4 +66,10 @@ function mostrarPerfil() {
 function fazerLogoff() {
   localStorage.clear();
   window.location.reload();
+}
+
+function mostarnav() {
+  const barra = document.getElementById("barranavegacao");
+  if (!barra) return; // se não existir, não faz nada
+  barra.style.visibility = 'visible';
 }

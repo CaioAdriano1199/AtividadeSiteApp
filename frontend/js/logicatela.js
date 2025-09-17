@@ -46,10 +46,16 @@ document.getElementById('btnlogin').addEventListener('click', async () => {
     const data = await res.json();
 
     if (res.ok) {
-      document.getElementById('nomeusuario').textContent = `Olá, ${data.cliente.nome}!`;
+      localStorage.setItem("nomeUsuario", data.cliente.nome);
+      localStorage.setItem("emailUsuario", data.cliente.email);
+
+      mostarnav();
       paratelaconteudo();
-      carregarHome();
       mostrarHome();
+      carregarHome();
+
+      const nomeEl = document.getElementById('nomeusuario');
+      if (nomeEl) nomeEl.textContent = `Olá, ${data.cliente.nome}!`;
     } else {
       alert(data.error || 'Erro ao logar');
     }
@@ -72,8 +78,8 @@ async function carregarEstabelecimentos() {
 
       const link = document.createElement('a');
       link.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(est.endereco)}`;
-      link.target = '_blank'; // abre em nova aba
-      link.style.textDecoration = 'none'; // remove sublinhado do link
+      link.target = '_blank';
+      link.style.textDecoration = 'none';
       link.style.color = 'inherit';
 
       const card = document.createElement('div');
@@ -116,7 +122,6 @@ async function carregarRanking() {
     const res = await fetch('http://localhost:3000/estabelecimentos');
     let data = await res.json();
 
-    // Ordena por nota (desc) e pega os 5 primeiros
     const top5 = data
       .sort((a, b) => b.nota - a.nota)
       .slice(0, 5);
@@ -126,7 +131,6 @@ async function carregarRanking() {
     rankingList.innerHTML = '';
 
     top5.forEach((est, index) => {
-      // link para maps
       const link = document.createElement('a');
       link.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(est.endereco)}`;
       link.target = '_blank';
@@ -178,7 +182,6 @@ async function carregarRanking() {
 async function carregarHome() {
   const boasVindas = document.getElementById('home-boas-vindas');
   const nomeUsuario = document.getElementById('nomeusuario').textContent.replace("Olá,", "").trim();
-  boasVindas.textContent = `Olá, ${nomeUsuario}!`;
 
   try {
     const res = await fetch('http://localhost:3000/estabelecimentos');
@@ -211,7 +214,7 @@ async function carregarHome() {
 
       const info = document.createElement('div');
       info.className = 'nome-nota';
-info.innerHTML = `
+      info.innerHTML = `
   <h4>${est.nome}</h4>
   <div class="nota-categoria">
     <span class="nota"><i class="bi bi-star-fill"></i> ${est.nota}</span>
@@ -233,6 +236,102 @@ info.innerHTML = `
 }
 
 //perfil
+function $(id) {
+  const el = document.getElementById(id);
+  if (!el) console.warn(`Elemento #${id} não encontrado`);
+  return el;
+}
+
+function carregarPerfil() {
+  const nome = localStorage.getItem("nomeUsuario") || "Usuário";
+  const email = localStorage.getItem("emailUsuario") || "email@teste.com";
+
+  if ($("nomeperfil")) $("nomeperfil").textContent = `Nome: ${nome}`;
+  if ($("emailperfil")) $("emailperfil").textContent = `Email: ${email}`;
+}
+
+function abrirModalEditar() {
+  const modal = $("modal-editar");
+  if (!modal) return;
+  modal.style.display = "flex";
+
+  $("editar-nome").value = localStorage.getItem("nomeUsuario") || "";
+}
+
+function fecharModalEditar() {
+  const modal = $("modal-editar");
+  if (!modal) return;
+  modal.style.display = "none";
+}
+
+async function salvarEdicao() {
+  const novoNome = document.getElementById("editar-nome").value.trim();
+  const emailUsuario = localStorage.getItem("emailUsuario"); // usado para identificar no banco
+
+  if (!emailUsuario) {
+    alert("Erro: não foi possível identificar o usuário logado.");
+    return;
+  }
+
+  if (!novoNome) {
+    alert("Digite um novo nome para atualizar.");
+    return;
+  }
+
+  try {
+    const res = await fetch("http://localhost:3000/editar-perfil", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: emailUsuario, nome: novoNome })
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      localStorage.setItem("nomeUsuario", novoNome);
+      carregarPerfil();
+      fecharModalEditar();
+      alert("Nome atualizado com sucesso!");
+    } else {
+      alert(data.error || "Erro ao atualizar perfil");
+    }
+  } catch (err) {
+    console.error(err);
+    alert("Erro ao conectar ao servidor");
+  }
+}
 
 
-window.addEventListener('DOMContentLoaded', carregarEstabelecimentos);
+async function excluirConta() {
+  if (!confirm("Tem certeza que deseja excluir sua conta?")) return;
+
+  const email = localStorage.getItem("emailUsuario");
+  try {
+    const res = await fetch(`http://localhost:3000/excluir-conta?email=${encodeURIComponent(email)}`, {
+      method: "DELETE"
+    });
+
+    if (res.ok) {
+      alert("Conta excluída com sucesso!");
+      localStorage.clear();
+      window.location.reload();
+    } else {
+      alert("Erro ao excluir conta");
+    }
+  } catch (err) {
+    console.error(err);
+    alert("Erro ao conectar ao servidor");
+  }
+}
+
+if ($("botoesperfil")) {
+  const botoes = $("botoesperfil").querySelectorAll("button");
+  if (botoes.length > 0) botoes[0].onclick = abrirModalEditar;
+  if (botoes.length > 1) botoes[1].onclick = excluirConta;
+}
+
+
+window.addEventListener('DOMContentLoaded', () => {
+  carregarPerfil();
+  carregarEstabelecimentos();
+});

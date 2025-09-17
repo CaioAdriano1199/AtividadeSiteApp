@@ -118,7 +118,7 @@ body {
     flex-direction: row;
     justify-content: space-around;
     height: 8%;
-
+    visibility: hidden;
 }
 
 .opcaonavbar {
@@ -202,11 +202,55 @@ body {
 
 .telaperfilS {
     display: none;
+    margin-top: 15%;
+    margin-bottom: 15%;
+    color: var(--azul);
+    text-align: center;
+}
+
+.infoPerfilS {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10%;
+    margin-left: 18%;
+    padding-top: 10%;
+}
+
+.infoPerfilS p {
+    text-align: left;
+    width: 100%;
+    margin: 0 auto;
+    font-weight: bold;
+}
+
+.botoesperfilS {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding-top: 10%;
+}
+
+.btnPerfil {
+    font-size: 16px;
+    padding: 10px 25px;
+    width: 200px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+
+
+.btnPerfil i {
+    margin-right: 8px;
+    vertical-align: middle;
 }
 
 
 .card {
-    border: 1px solid #ccc;
+    border: 1px solid var(--azul);
     border-radius: 8px;
     padding: 12px;
     margin: 10px;
@@ -284,25 +328,16 @@ body {
 .card-destaque {
     display: flex;
     align-items: center;
-    gap: 16px;
-    padding: 16px;
-    margin: 12px 0;
+    gap: 12px;
+    padding: 12px;
+    margin: 12px auto;
     border-radius: 12px;
-    background: #fff;
+    background: var(--corfundo);
+    border: solid 1px var(--azul);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     cursor: pointer;
-    max-width: 500px;
-}
-
-.card-destaque {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: #fff;
-    border-radius: 12px;
-    padding: 12px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    width: 90%;
 }
 
 .card-destaque img {
@@ -348,3 +383,66 @@ body {
     text-align: center;
 }
 
+#infoPerfil p {
+    margin: 4px 0;
+    font-size: 16px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: var(--corfundo);
+    color: var(--azul);
+    padding: 20px;
+    border-radius: 12px;
+    width: 300px;
+    max-width: 90%;
+    position: relative;
+    text-align: center;
+}
+
+.close {
+    position: absolute;
+    color:var(--azul);
+    top: 10px;
+    right: 15px;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.form-group input {
+    width: 95%;
+    padding: 8px;
+    border-radius: 6px;
+    border: none;
+    background-color: var(--input);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.modal-content button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    background: var(--azul);
+    color: var(--corfundo);
+    font-weight: bold;
+    cursor: pointer;
+}

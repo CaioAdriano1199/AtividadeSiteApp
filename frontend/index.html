@@ -55,7 +55,7 @@
             </div>
         </header>
         <div id="telahome" class="telahomeS">
-            <h1 class="titulotela" id="home-boas-vindas">Olá, usuário!</h1>
+            <h1 class="titulotela" id="home-boas-vindas">Bem vindo!</h1>
             <h2 class="textohome">Pronto para explorar novos lugares hoje?</h2>
             <h3 class="titulotela">Destaques</h3>
             <div id="home-destaques" class="destaques-container"></div>
@@ -69,18 +69,18 @@
             <div id="ranking-list"></div>
         </div>
         <div id="telaperfil" class="telaperfilS">
-            <h1>Perfil</h1>
-            <div id="infoPerfil">
+            <h1 class="titulotela">Perfil</h1>
+            <div id="infoPerfil" class="infoPerfilS">
                 <p id="nomeperfil"></p>
                 <p id="emailperfil"></p>
             </div>
-            <div id="botoesperfil">
-                <button>Editar</button>
-                <button>Excluir</button>
-                <button onclick="fazerLogoff()">Logoff</button>
+            <div id="botoesperfil" class="botoesperfilS">
+                <button class="btncad btnPerfil"><i class="bi bi-pencil"></i> Editar</button>
+                <button class="btncad btnPerfil" style="background-color: rgb(121, 0, 0);"><i class="bi bi-trash3"></i> Excluir</button>
+                <button onclick="fazerLogoff()" class="btncad btnPerfil"><i class="bi bi-box-arrow-right"></i> Logoff</button>
             </div>
         </div>
-        <navbar class="barranavegacao">
+        <navbar id="barranavegacao" class="barranavegacao">
             <button onclick="mostrarHome()" class="opcaonavbar"><i class="bi bi-house"></i>home</button>
             <button onclick="mostrarLugares()" class="opcaonavbar"><i class="bi bi-geo-alt"></i>Locais</button>
             <button onclick="mostrarRanking()" class="opcaonavbar"><i class="bi bi-star"></i>Ranking</button>
@@ -88,6 +88,17 @@
         </navbar>
     </div>
 
+    <div id="modal-editar" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModalEditar()">&times;</span>
+            <h3>Editar Perfil</h3>
+            <div class="form-group">
+                <label for="editar-nome">Nome:</label>
+                <input type="text" id="editar-nome">
+            </div>
+            <button onclick="salvarEdicao()">Salvar</button>
+        </div>
+    </div>
 
     <script src="js/logicatela.js"></script>
     <script src="js/script.js"></script>
