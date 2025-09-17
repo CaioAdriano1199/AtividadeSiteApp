@@ -64,11 +64,6 @@ function mostrarPerfil() {
 }
 
 function fazerLogoff() {
-  localStorage.removeItem('usuarioNome');
-
-  document.getElementById('telaconteudo').style.display = 'none';
-  document.getElementById('telalogin').style.display = 'flex';
-  document.getElementById('emaillog').textContent = '';
-  document.getElementById('senhalog').textContent = '';
-  document.getElementById('nomeusuario').textContent = "Olá,!";
+  localStorage.clear();
+  window.location.reload();
 }
