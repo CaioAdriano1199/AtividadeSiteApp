@@ -50,22 +50,32 @@
             <div div class="container">
                 <p id="nomeusuario" onclick="abrirmenuacao()">Olá,!</p>
                 <div id="menuacao" class="menuacaoS">
-                    <p>Sair</p>
+                    <p onclick="fazerLogoff()">Sair</p>
                 </div>
             </div>
         </header>
-        <div id="telahome" class="telahomeS"></div>
+        <div id="telahome" class="telahomeS">
+            <h1 class="titulotela" id="home-boas-vindas">Olá, usuário!</h1>
+            <h2 class="textohome">Pronto para explorar novos lugares hoje?</h2>
+            <h3 class="titulotela">Destaques</h3>
+            <div id="home-destaques" class="destaques-container"></div>
+        </div>
         <div id="telalugares" class="telalugaresS">
             <h2 class="titulotela">Lugares</h2>
             <div id="listaEstabelecimentos"></div>
         </div>
-        <div id="telaranking" class="telarankingS"></div>
-        <div id="telaperfil" class="telaperfilS"></div>
+        <div id="telaranking" class="telarankingS">
+            <h2 class="titulotela">Ranking de avaliação</h2>
+            <div id="ranking-list"></div>
+        </div>
+        <div id="telaperfil" class="telaperfilS">
+            
+        </div>
         <navbar class="barranavegacao">
-            <button class="opcaonavbar"><i class="bi bi-house"></i>home</button>
-            <button class="opcaonavbar"><i class="bi bi-geo-alt"></i>Locais</button>
-            <button class="opcaonavbar"><i class="bi bi-star"></i>Ranking</button>
-            <button class="opcaonavbar"><i class="bi bi-person"></i>Perfil</button>
+            <button onclick="mostrarHome()" class="opcaonavbar"><i class="bi bi-house"></i>home</button>
+            <button onclick="mostrarLugares()" class="opcaonavbar"><i class="bi bi-geo-alt"></i>Locais</button>
+            <button onclick="mostrarRanking()" class="opcaonavbar"><i class="bi bi-star"></i>Ranking</button>
+            <button onclick="mostrarPerfil()" class="opcaonavbar"><i class="bi bi-person"></i>Perfil</button>
         </navbar>
     </div>
 

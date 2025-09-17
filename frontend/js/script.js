@@ -3,6 +3,7 @@ const cadastro = document.getElementById("telacadastro");
 const conteudo = document.getElementById("telaconteudo");
 const menuacaoL = document.getElementById("menuacao");
 const olaP = document.querySelector(".container p");
+const barranav = document.getElementById("barranavegacao");
 
 function paratelacadastro() {
     login.style.display = "none";
@@ -28,3 +29,46 @@ document.addEventListener("click", function (event) {
         menuacaoL.classList.remove("ativo");
     }
 });
+
+function mostrarRanking() {
+  document.getElementById("telahome").style.display = "none";
+  document.getElementById("telalugares").style.display = "none";
+  document.getElementById("telaperfil").style.display = "none";
+  document.getElementById("telaranking").style.display = "block";
+
+  carregarRanking();
+}
+
+function mostrarLugares() {
+  document.getElementById("telahome").style.display = "none";
+  document.getElementById("telalugares").style.display = "block";
+  document.getElementById("telaperfil").style.display = "none";
+  document.getElementById("telaranking").style.display = "none";
+
+}
+
+function mostrarHome() {
+  document.getElementById("telahome").style.display = "block";
+  document.getElementById("telalugares").style.display = "none";
+  document.getElementById("telaperfil").style.display = "none";
+  document.getElementById("telaranking").style.display = "none";
+
+}
+
+function mostrarPerfil() {
+  document.getElementById("telahome").style.display = "none";
+  document.getElementById("telalugares").style.display = "none";
+  document.getElementById("telaperfil").style.display = "block";
+  document.getElementById("telaranking").style.display = "none";
+
+}
+
+function fazerLogoff() {
+  localStorage.removeItem('usuarioNome');
+
+  document.getElementById('telaconteudo').style.display = 'none';
+  document.getElementById('telalogin').style.display = 'flex';
+  document.getElementById('emaillog').textContent = '';
+  document.getElementById('senhalog').textContent = '';
+  document.getElementById('nomeusuario').textContent = "Olá,!";
+}
