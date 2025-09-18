@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; font-src 'self' https://fonts.gstatic.com; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'">
     <title>PasseioBNU</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -77,8 +79,10 @@
             </div>
             <div id="botoesperfil" class="botoesperfilS">
                 <button class="btncad btnPerfil"><i class="bi bi-pencil"></i> Editar</button>
-                <button class="btncad btnPerfil" style="background-color: rgb(121, 0, 0);"><i class="bi bi-trash3"></i> Excluir</button>
-                <button onclick="fazerLogoff()" class="btncad btnPerfil"><i class="bi bi-box-arrow-right"></i> Logoff</button>
+                <button class="btncad btnPerfil" style="background-color: rgb(121, 0, 0);"><i class="bi bi-trash3"></i>
+                    Excluir</button>
+                <button onclick="fazerLogoff()" class="btncad btnPerfil"><i class="bi bi-box-arrow-right"></i>
+                    Logoff</button>
             </div>
         </div>
         <navbar id="barranavegacao" class="barranavegacao">
