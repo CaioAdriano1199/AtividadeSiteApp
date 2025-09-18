@@ -17,6 +17,10 @@ const SUPABASE_URL = 'https://edyonhbkbcddrdiogxei.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVkeW9uaGJrYmNkZHJkaW9neGVpIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1ODAzMDc5NiwiZXhwIjoyMDczNjA2Nzk2fQ.Fj8Qd1zq8GmL7_u0y3P2cyLTj5fsF6msTkytBegUtZE';
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
+const path = require("path");
+
+app.use(express.static(path.join(__dirname, "public")));
+
 app.get('/estabelecimentos', async (req, res) => {
   try {
     const { data, error } = await supabase
@@ -134,7 +138,7 @@ app.delete('/excluir-conta', async (req, res) => {
       .ilike('email', email.trim());
 
     if (error) return res.status(500).json({ error: "Erro ao excluir conta", details: error });
-  
+
     res.json({ message: "Conta excluída com sucesso" });
   } catch (err) {
     console.error('Erro inesperado:', err);
@@ -147,6 +151,6 @@ app.delete('/excluir-conta', async (req, res) => {
 
 
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));
 
