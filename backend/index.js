@@ -3,23 +3,12 @@ const cors = require('cors');
 const { createClient } = require('@supabase/supabase-js');
 
 const app = express();
-app.use((req, res, next) => {
-  res.setHeader(
-    "Content-Security-Policy",
-    "default-src 'self'; font-src 'self' https://fonts.gstatic.com; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'"
-  );
-  next();
-});
 app.use(cors());
 app.use(express.json());
 
 const SUPABASE_URL = 'https://edyonhbkbcddrdiogxei.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVkeW9uaGJrYmNkZHJkaW9neGVpIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1ODAzMDc5NiwiZXhwIjoyMDczNjA2Nzk2fQ.Fj8Qd1zq8GmL7_u0y3P2cyLTj5fsF6msTkytBegUtZE';
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
-
-const path = require("path");
-
-app.use(express.static(path.join(__dirname, "public")));
 
 app.get('/estabelecimentos', async (req, res) => {
   try {
@@ -138,13 +127,16 @@ app.delete('/excluir-conta', async (req, res) => {
       .ilike('email', email.trim());
 
     if (error) return res.status(500).json({ error: "Erro ao excluir conta", details: error });
-
+  
     res.json({ message: "Conta excluída com sucesso" });
   } catch (err) {
     console.error('Erro inesperado:', err);
     res.status(500).json({ error: "Erro ao excluir conta" });
   }
 });
+
+
+
 
 
 
